@@ -1,9 +1,19 @@
 <?php
+include("../assets/inc/headBack.php");
 
 /*TODO: si l'utilisateur n'est pas connecté ou n'est pas administrateur,
 le rediriger et l'inviter à se reconnecter
 */
-include("../assets/inc/headBack.php")
+if (
+    !isset($_SESSION["role"], $_SESSION["isLog"], $_SESSION["prenom"])
+    || !$_SESSION["isLog"] || $_SESSION["role"] != 1
+) :
+    $_SESSION["message3"] = "Vous n'êtes pas l'administrateur de ce site";
+    // redirection vers la page d'accueil
+    header("Location:../index.php");
+endif;
+
+
 ?>
 
 <title>
@@ -17,6 +27,10 @@ include("../assets/inc/headerBack.php");
 
 <div class="row">
     <?php
+
+
+
+
     if (isset($_SESSION["message2"])) :
         echo '<div class="alert alert-success text-center" role="alert" role = "alert">
                 ' . $_SESSION["message2"] . '
@@ -27,19 +41,13 @@ include("../assets/inc/headerBack.php");
 
     if (isset($_SESSION["message3"])) :
         echo '<div class="alert alert-success text-center" role="alert" role = "alert">
-                ' . $_SESSION["message2"] . '
+                ' . $_SESSION["message3"] . '
                 </div>';
         // on efface la clé message, une fois qu'elle a été afficher
         unset($_SESSION["message3"]);
     endif;
 
 
-    if (isset($_SESSION["role"],$_SESSION["isLog"],$_SESSION["prenom"]) 
-    || !$_SESSION["isLog"] || $_SESSION["rôle"] != 1 ):
-    $_SESSION["message3"] = "Vous n'êtes pas l'administrateur de ce site";
-    // redirection vers la page d'accueil
-    header("Location:../index.php");
-    endif;
 
     ?>
 

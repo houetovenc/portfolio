@@ -24,11 +24,18 @@ include("../assets/inc/headerback.php");
                     $options = ['cost' => 12];
                     $password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT, $options);
                     // on dit que 1 est admin pour le rôle
-                    $role1 = 1;
+                    // $role1 = 1;
+                    if (isset($_POST["isAdmin"])) {
+                            $role = 1;
+                    } else {
+                        $role = 2;
+                    };
+                   
+
                     // préparation de l'ecriture SQL
                     $sql = "
                         INSERT INTO user (nom,prenom,email,password,role)
-                        VALUE ('$nom', '$prenom', '$email', '$password', '$role1')
+                        VALUE ('$nom', '$prenom', '$email', '$password', '$role')
                     ";
 
                     // execution de la requète avec les paramètres de connexion
@@ -62,7 +69,12 @@ include("../assets/inc/headerback.php");
                     <input class="form-control mb-2" type="email" name="email" placeholder="Adresse Mail">
                     <input class="form-control mb-2" type="password" name="password" placeholder="Mot de passe">
 
-                    <div class="container d-flex justify-content-end m-0 p-0">
+                    <div class="py-2">
+                    <label for="isAdmin">Rôle Administrateur</label>
+                        <input class="form-check-input bg-info" type="checkbox" id="isAdmin" name="isAdmin">
+                    </div>
+
+                    <div class="container d-flex justify-content-end m-0 py-2">
                         <button class="btn bg-secondary text-light fw-light" name="soumettre" type="submit">Enregistrer</button>
                     </div>
                 </form>

@@ -9,6 +9,7 @@ include("assets/inc/headerFront.php")
 ?>
 <?php
 
+
 if (isset($_SESSION["message"])) :
     echo '<div class="alert alert-primary text-center" role="alert">
     ' . $_SESSION["message"] . '
