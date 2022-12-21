@@ -1,12 +1,12 @@
 <!-- // dans ce fichier on vas créer la page de connexion a nitre back-office / avec le login identifiant et mot de passe  -->
 
 <?php
-include("../assets/inc/headback.php")
+include("../assets/inc/back/headback.php")
 
 ?>
 
 <?php
-include("../assets/inc/headerback.php")
+include("../assets/inc/back/headerback.php")
 
 ?>
 <title>Login Administrateur</title>
@@ -89,6 +89,6 @@ include("../assets/inc/headerback.php")
 
 
 <?php
-include("../assets/inc/footerFront.php")
+include("../assets/inc/back/footerBack.php")
 
 ?>

@@ -10,6 +10,8 @@
         $action = $_POST["faire"];
     endif;
 
+
+
     // on utilise un switch pour vérifier l'action
     switch ($action):
         // log-admin correspond à value="log-admin" dans l'input caché
@@ -21,11 +23,19 @@
 
     // on utilise un switch pour vérifier l'action
     switch ($action):
-        // log-admin correspond à value="log-admin" dans l'input caché
+        // log-Out correspond à value="log-Out" dans l'input caché
         // du fichier admin/index.php
         case "log-out":
             logOut();
         break;
+    endswitch;
+
+    switch ($action):
+        
+        case "update":
+            updateUser();
+
+            break;
     endswitch;
 
     // les différentes fonctions de notre controleur
@@ -97,5 +107,72 @@
         exit;
     }
 
+    function updateUser(){
+
+        // Vérifier si les informations on bien été envoyées
+        if(!isset($_POST["nom"],$_POST["prenom"],
+        $_POST["email"],$_POST["password"], $_POST["role"],$_POST["id"])){
+            $_SESSION["message"] = "Information(s) manquante(s) dans le formulaire";
+            header("Location:../admin/updateUsers.php?id=" . $_POST["id"]);
+            exit;
+
+        }
+
+        // Récupération des informations envoyer pas le formulaire
+        
+        $nom = ucfirst(trim($_POST["nom"]));
+        $prenom = ucfirst(trim($_POST["prenom"]));
+        $email = strtolower(trim($_POST["email"]));
+        // Encodage du mot de passe
+        $options = ['cost' => 12];
+        $password = password_hash('$password', PASSWORD_DEFAULT, $options);
+        $role = $_POST["role"];
+        $id =  $_POST["id"];
+
+        // validation des informations
+
+        if(strlen($nom) < 1 || strlen($nom) > 255){
+            $_SESSION["message"] = "Le nom doit avoir un nombre ce caractère compris entre 1 et 255";
+            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            exit;
+        }
+
+        if(strlen($email) < 1 ) {
+            $_SESSION["message"] = "L'Email est invalide";
+            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            exit;
+        }
+
+        if(strlen($password) < 1 ) {
+            $_SESSION["message"] = "Le mot de passe doit contenir au moins 1 caractère";
+            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            exit;
+        }
+
+        if($role !=  1 && $role != 2) {
+            $_SESSION["message"] = "Le rôle est invalide";
+            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            exit;
+        }
+        // Les données sont valider, préparons nous a les envoyer en Bdd
+        require("connexion.php");
+        
+        $sql = "UPDATE user 
+                SET `nom` = '$nom',
+                    `prenom` = '$prenom',
+                    `email` = '$email',
+                    `role` = $role,
+                    `password` = '$password'
+                WHERE `id_user` = $id;
+                ";
+
+
+            mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
+
+             $_SESSION["message2"] = "Les données on bien été mise à jour";
+            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            exit;
+
+    }
 
 ?>

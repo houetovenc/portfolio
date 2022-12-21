@@ -1,5 +1,5 @@
 <?php
-include("../assets/inc/headBack.php");
+include("../assets/inc/back/headBack.php");
 
 /*TODO: si l'utilisateur n'est pas connecté ou n'est pas administrateur,
 le rediriger et l'inviter à se reconnecter
@@ -16,12 +16,12 @@ endif;
 
 ?>
 
-<title>
+<title>Console d'administration
 </title>
 
 
 <?php
-include("../assets/inc/headerBack.php");
+include("../assets/inc/back/headerBack.php");
 ?>
 
 
@@ -75,6 +75,6 @@ include("../assets/inc/headerBack.php");
 </main>
 
 <?php
-include("../assets/inc/footerBack.php")
+include("../assets/inc/back/footerBack.php")
 
 ?>

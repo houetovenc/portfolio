@@ -1,11 +1,11 @@
 <?php
-include("assets/inc/headFront.php")
+include("assets/inc/front/headFront.php")
 ?>
 <title>Portfolio</title>
 
 
 <?php
-include("assets/inc/headerFront.php")
+include("assets/inc/front/headerFront.php")
 ?>
 <?php
 
@@ -34,5 +34,5 @@ endif;
 </main>
 
 <?php
-include("assets/inc/footerFront.php")
+include("assets/inc/front/footerFront.php")
 ?>
