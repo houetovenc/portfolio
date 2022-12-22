@@ -84,39 +84,32 @@ $user = mysqli_fetch_assoc($query);
 <main>
 
 
-    <div class="container col-4 pt-5">
-        <h2 class="text-center">Modifier l'utilisateur</h2>
-        <form method="POST" action="../core/userController.php">
-        <input type="hidden" name="faire" value="update">
-        <input type="hidden" name="id" value="<?= $user["id_user"]; ?>" />
+    <div class="container pt-5 col-3">
 
-            <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" class="form-control" value="<?= $user["nom"];?>" />
-    
-            <label for="prenom">Prenom :</label>
-            <input type="text" name="prenom" id="prenom" class="form-control" value="<?= $user["prenom"];?>" />
-    
-            <label for="email">Email :</label>
-            <input type="email" name="email" id="email" class="form-control" value="<?= $user["email"];?>" />
-    
-            <label for="motdepass">Mot de passe :</label>
-            <input type="password" name="motdepass" id="motdepass" class="form-control" value="" />
-    
-            <label for="role">Rôle</label>
-            <select name="role" id="role" class="form-control" >
-            <option value="2"<?php if($user ["role"] == 2) {
-                echo "selected";
-            } ?> >utilisateur</option>
-            <option value="1"<?php if($user ["role"] == 1) {
-                echo "selected";
-            } ?> >Administrateur</option>
-            </select>
-            <button type="submit" class="btn btn-secondary mt-3">Modifier</button>
-
-
-        </form>
-
+        <div class=" row border rounded shadow px-5 py-5">
+            <h3>informations</h3>
+            <ul>
+                <li><?= $user["id_user"]; ?></li>
+                <li><?= $user["nom"]; ?></li>
+                <li><?= $user["prenom"]; ?></li>
+                <li><?= $user["email"]; ?></li>
+                <li><?php
+                    if ($user["role"] == 1) {
+                        echo "administrateur";
+                    } else {
+                        echo "utilisateur";
+                    }
+                    ?></li>
+            </ul>
+        </div>
+        
+        <a type="button" href="listUsers.php" class="btn btn-secondary mt-3">Retour List</a>
     </div>
+
+    <?php
+
+    ?>
+
 
 
 </main>

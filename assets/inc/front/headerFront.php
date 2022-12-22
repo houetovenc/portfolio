@@ -23,7 +23,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Front-end</a></li>
-                                <li><a class="dropdown-item" href="#">Back-end</a></li>
+                                <li><a class="dropdown-item" href="admin/listUsers.php">Liste des utilisateurs</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

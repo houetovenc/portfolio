@@ -38,6 +38,14 @@
             break;
     endswitch;
 
+    switch ($action):
+        
+        case "delete":
+            deleteUser();
+
+            break;
+    endswitch;
+
     // les différentes fonctions de notre controleur
     function logAdmin(){
         // besoin de notre connexion
@@ -60,8 +68,8 @@
         $user = mysqli_fetch_assoc($query);
         // ensuite il faut vérifier le mot de passe
         // le but c'est de vérifier si le mot de passe saisie = à l'encodage stocké en bdd
-        // avec la fonction password_verify() qui nous renvoie true ou false, on vérifie le mot de passe.
-            if (password_verify(trim($_POST["password"]), $user["password"])):
+        // avec la fonction motdepass_verify() qui nous renvoie true ou false, on vérifie le mot de passe.
+            if (password_verify(trim($_POST["motdepass"]), $user["password"])):
                 // vérifier le rôle
                 // on dit que 1 c'est le role admin
                 if ($user["role"] != 1):
@@ -91,9 +99,8 @@
             $_SESSION["message"] = "Désolé, cette identifiant ne correspond à aucun administrateur !";
             header("Location:../admin/index.php");
             exit;
-    endif;
+        endif;
     }
-
 
     function logOut(){
         // pour déconnecter l'admin, il faut supprimer les variables de session
@@ -111,7 +118,7 @@
 
         // Vérifier si les informations on bien été envoyées
         if(!isset($_POST["nom"],$_POST["prenom"],
-        $_POST["email"],$_POST["password"], $_POST["role"],$_POST["id"])){
+        $_POST["email"],$_POST["motdepass"], $_POST["role"],$_POST["id"])){
             $_SESSION["message"] = "Information(s) manquante(s) dans le formulaire";
             header("Location:../admin/updateUsers.php?id=" . $_POST["id"]);
             exit;
@@ -123,12 +130,11 @@
         $nom = ucfirst(trim($_POST["nom"]));
         $prenom = ucfirst(trim($_POST["prenom"]));
         $email = strtolower(trim($_POST["email"]));
+        $role = $_POST["role"];
+        $id = $_POST["id"];
         // Encodage du mot de passe
         $options = ['cost' => 12];
-        $password = password_hash('$password', PASSWORD_DEFAULT, $options);
-        $role = $_POST["role"];
-        $id =  $_POST["id"];
-
+        $motdepass = password_hash(trim($_POST["motdepass"]), PASSWORD_DEFAULT, $options);
         // validation des informations
 
         if(strlen($nom) < 1 || strlen($nom) > 255){
@@ -143,7 +149,7 @@
             exit;
         }
 
-        if(strlen($password) < 1 ) {
+        if(strlen($motdepass) < 1 ) {
             $_SESSION["message"] = "Le mot de passe doit contenir au moins 1 caractère";
             header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
             exit;
@@ -158,20 +164,34 @@
         require("connexion.php");
         
         $sql = "UPDATE user 
-                SET `nom` = '$nom',
-                    `prenom` = '$prenom',
-                    `email` = '$email',
-                    `role` = $role,
-                    `password` = '$password'
-                WHERE `id_user` = $id;
-                ";
+            SET
+                `nom` = '$nom',
+                `prenom` = '$prenom',
+                `email` = '$email',
+                `role` = $role,
+                `password` = '$motdepass'
+            WHERE `id_user` = $id
+            ";
 
 
             mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
 
              $_SESSION["message2"] = "Les données on bien été mise à jour";
-            header("Location:../admin/updateUsers.php?id=". $_POST["id"]);
+            header("Location:../admin/readUsers.php?id=". $_POST["id"]);
             exit;
+
+    }
+
+
+    function deleteUser(){
+        //recupération de la connexion
+        require("connexion.php");
+        //recupération de l'id dans l'input caché du formulaire du bouton qui à le name="id"
+        $id = $_POST['id'];
+        $sql = "DELETE FROM user WHERE id_user = $id";
+        $query = mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
+        $_SESSION["message"] = "Lutilisateur a bien été supprimé";
+        header("Location:../admin/listUsers.php");
 
     }
 

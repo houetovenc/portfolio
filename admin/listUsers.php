@@ -75,6 +75,8 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <div class=" row border rounded shadow pt-5 px-5 py-5">
  <!-- (écriture 2) -->
         <h4>USERS</h4>
+        <p><a href="createUsers.php" class="btn btn-secondary">NEW</a>
+</p>
 
             <div>
                 <table class='table'>
@@ -86,6 +88,7 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
                             <th>PRENOM</th>
                             <th>MAIL</th>
                             <th>ROLE</th>
+                            <th class="text-center">ACTIONS</th>
                     </thead>
 
                     <?php
@@ -95,7 +98,7 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
                     ?>
 
                         <tr>
-                        <td><a href="updateUsers.php?id=<?= $user["id_user"]; ?>"><?= $user["id_user"]; ?></a></td>
+                        <td><a href="readUsers.php?id=<?= $user["id_user"]; ?> "><?= $user["id_user"]; ?></a></td>
                             <td><?= $user["nom"]; ?></td>
                             <td><?= $user["prenom"]; ?></td>
                             <td><?= $user["email"]; ?></td>
@@ -107,9 +110,13 @@ $users = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                 }
                                 ?>
                             </td>
-                            <td>[SUPPRIMER]</td>
+                            <td class="text-center">
+                                <a type="button" href="readUsers.php?id=<?= $user["id_user"]; ?> " class="btn btn-secondary">Afficher</a>
+                                <a type="button" href="updateUsers.php?id=<?= $user["id_user"]; ?> " class="btn btn-secondary">Modifier</a>
+                                <a type="button" href="deleteUsers.php?id=<?= $user["id_user"]; ?> " class="btn btn-secondary">Supprimer</a>
+                                </td>
 
-                            <td><a href="updateUsers.php?id=<?= $user["id_user"]; ?>">[VOIR]</a></td>
+                            
 
                         </tr>
                     <?php

@@ -39,7 +39,7 @@ $user = mysqli_fetch_assoc($query);
 
 <div class="row">
 
-<?php
+    <?php
     if (isset($_SESSION["message"])) :
         echo '<div class="alert alert-danger text-center" role="alert" role = "alert">
         ' . $_SESSION["message"] . '
@@ -48,7 +48,7 @@ $user = mysqli_fetch_assoc($query);
         unset($_SESSION["message"]);
     endif;
 
-    
+
 
     ?>
 
@@ -82,40 +82,59 @@ $user = mysqli_fetch_assoc($query);
 
 
 <main>
-
-
-    <div class="container col-4 pt-5">
-        <h2 class="text-center">Modifier l'utilisateur</h2>
-        <form method="POST" action="../core/userController.php">
-        <input type="hidden" name="faire" value="update">
-        <input type="hidden" name="id" value="<?= $user["id_user"]; ?>" />
-
-            <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" class="form-control" value="<?= $user["nom"];?>" />
     
-            <label for="prenom">Prenom :</label>
-            <input type="text" name="prenom" id="prenom" class="form-control" value="<?= $user["prenom"];?>" />
+    <div class="container pt-5 d-flex justify-content-center">
+
+    <div class="container pt-5 col-3">
+
+        <div class=" row border rounded shadow px-5 py-5">
+            <h3>informations</h3>
+            <ul>
+                <li><?= $user["id_user"]; ?></li>
+                <li><?= $user["nom"]; ?></li>
+                <li><?= $user["prenom"]; ?></li>
+                <li><?= $user["email"]; ?></li>
+                <li><?php
+                    if ($user["role"] == 1) {
+                        echo "administrateur";
+                    } else {
+                        echo "utilisateur";
+                    }
+                    ?></li>
+            </ul>
+        </div>
+
+    </div>
+
     
-            <label for="email">Email :</label>
-            <input type="email" name="email" id="email" class="form-control" value="<?= $user["email"];?>" />
-    
-            <label for="motdepass">Mot de passe :</label>
-            <input type="password" name="motdepass" id="motdepass" class="form-control" value="" />
-    
-            <label for="role">Rôle</label>
-            <select name="role" id="role" class="form-control" >
-            <option value="2"<?php if($user ["role"] == 2) {
-                echo "selected";
-            } ?> >utilisateur</option>
-            <option value="1"<?php if($user ["role"] == 1) {
-                echo "selected";
-            } ?> >Administrateur</option>
-            </select>
-            <button type="submit" class="btn btn-secondary mt-3">Modifier</button>
+        <div class="container col-6 text-center border rounded shadow px-5 py-5">
 
 
-        </form>
 
+            <h2>Suppression de l'utilisateur</h2>
+            <?php
+            $id = $_GET["id"];
+            require("../core/connexion.php");
+            $sql = "SELECT id_user, nom, prenom, email, role
+    FROM user
+    WHERE id_user = $id
+    ";
+            $query = mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
+            $users = mysqli_fetch_assoc($query);
+            ?>
+
+            <h4>Attention vous êtes sur le point de supprimer l'utilisateur <?php echo $users["nom"] . " " . $users["prenom"] . " 😦 " ?> </h4>
+
+            <div  class="container d-flex justify-content-around ">
+                <a type="button" class="btn bg-white mt-3 " href="listUsers.php">Retour liste</a>
+                <form action="../core/userController.php" method="POST">
+                    <input type="hidden" name="faire" value="delete">
+                    <input type="hidden" name="id" value="<?= $users["id_user"] ?>">
+                    <button type="submit" class="btn bg-white mt-3">Supprimer</button>
+                </form>
+
+            </div>
+        </div>
     </div>
 
 
