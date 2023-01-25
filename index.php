@@ -58,15 +58,15 @@ include("assets/inc/front/headerFront.php")
         </div>
     </div>
 
-    <div class="container col-9 pb-5 pt-5">
+    <div class="col pb-5 pt-5">
         <div class="text-center">
             <h3 class="titresection1">A PROPO DE MOI</h3>
         </div>
-        <div class="container d-flex flex-row justify-content-around pt-5">
-            <div>
+        <div class="row justify-content-around px-5 mx-5 pt-5">
+            <div class="container" style="width: 400px;">
                 <img class="imageportrait border border-3" src="assets/images/portrait.jpg" alt="portrait">
             </div>
-            <div class="col-6">
+            <div class="container text-center" style="width: 700px;">
                 <p class="descriptionofme">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, dicta accusamus!
                     Adipisci officia dolores illum! Itaque nihil voluptas dolorum praesentium,
                     magni sequi illum ut repellendus expedita libero explicabo accusantium assumenda iste architecto a doloribus quasi soluta eius,
@@ -174,7 +174,7 @@ include("assets/inc/front/headerFront.php")
                     </div>
                 </div>
             </div>
-            <div class="container text-center" style="width: 500px;">
+            <div class="container text-center" style="width: 400px;">
                 <img class="cv1 border border-3 mt-4" src="assets/images/cv1.png" alt="">
                 <button type="button" class="btn btn-light border border-3 mt-5">Télécharger mon CV</button>
             </div>
