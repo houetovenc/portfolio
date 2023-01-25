@@ -84,8 +84,8 @@ $user = mysqli_fetch_assoc($query);
 <main>
 
 
-    <div class="container col-4 pt-5">
-        <h2 class="text-center">Modifier l'utilisateur</h2>
+    <div class="container col-3 border rounded shadow px-5 py-5 my-5 pt-5">
+        <h2 class="text-center py-2">Modifier l'utilisateur</h2>
         <form method="POST" action="../core/userController.php">
         <input type="hidden" name="faire" value="update">
         <input type="hidden" name="id" value="<?= $user["id_user"]; ?>" />

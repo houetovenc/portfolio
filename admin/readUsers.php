@@ -14,14 +14,11 @@ if (
     header("Location:../index.php");
 endif;
 require("../core/connexion.php");
-
 $id = $_GET['id'];
-
 $sql = "SELECT `id_user`,`nom`,`prenom`,`email`,`role`
     FROM user
     WHERE id_user = $id
     ";
-
 $query = mysqli_query($connexion, $sql) or die(mysqli_error($connexion));
 
 $user = mysqli_fetch_assoc($query);
@@ -35,11 +32,8 @@ $user = mysqli_fetch_assoc($query);
 
 <?php
 ?>
-
-
 <div class="row">
-
-<?php
+    <?php
     if (isset($_SESSION["message"])) :
         echo '<div class="alert alert-danger text-center" role="alert" role = "alert">
         ' . $_SESSION["message"] . '
@@ -47,16 +41,8 @@ $user = mysqli_fetch_assoc($query);
         // on efface la clé message, une fois qu'elle a été afficher
         unset($_SESSION["message"]);
     endif;
-
-    
-
     ?>
-
     <?php
-
-
-
-
     if (isset($_SESSION["message2"])) :
         echo '<div class="alert alert-success text-center" role="alert" role = "alert">
                 ' . $_SESSION["message2"] . '
@@ -64,7 +50,6 @@ $user = mysqli_fetch_assoc($query);
         // on efface la clé message, une fois qu'elle a été afficher
         unset($_SESSION["message2"]);
     endif;
-
     if (isset($_SESSION["message3"])) :
         echo '<div class="alert alert-success text-center" role="alert" role = "alert">
                 ' . $_SESSION["message3"] . '
@@ -72,20 +57,10 @@ $user = mysqli_fetch_assoc($query);
         // on efface la clé message, une fois qu'elle a été afficher
         unset($_SESSION["message3"]);
     endif;
-
-
-
     ?>
-
 </div>
-
-
-
 <main>
-
-
     <div class="container pt-5 col-3">
-
         <div class=" row border rounded shadow px-5 py-5">
             <h3>informations</h3>
             <ul>
@@ -101,17 +76,13 @@ $user = mysqli_fetch_assoc($query);
                     }
                     ?></li>
             </ul>
+            <div class="d-flex justify-content-end p-0 m-0">
+                <a type="button" href="listUsers.php" class="btn bg-white mt-3 col-5 ">Retour List</a>
+            </div>
         </div>
-        
-        <a type="button" href="listUsers.php" class="btn btn-secondary mt-3">Retour List</a>
     </div>
-
     <?php
-
     ?>
-
-
-
 </main>
 
 <?php

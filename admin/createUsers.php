@@ -68,20 +68,20 @@ include("../assets/inc/back/headerback.php");
                     <input class="form-control mb-2" type="text" name="prenom" placeholder="Votre Prenom">
                     <input class="form-control mb-2" type="email" name="email" placeholder="Adresse Mail">
                     <input class="form-control mb-2" type="password" name="motdepass" placeholder="Mot de passe">
-
                     <div class="py-2">
                     <label for="isAdmin">Rôle Administrateur</label>
-                        <input class="form-check-input bg-info" type="checkbox" id="isAdmin" name="isAdmin">
+                        <input class="form-check-input bg-dark" type="checkbox" id="isAdmin" name="isAdmin">
                     </div>
-
                     <div class="container d-flex justify-content-end m-0 py-2">
                         <button class="btn bg-secondary text-light fw-light" name="soumettre" type="submit">Enregistrer</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
+    <div class="d-flex justify-content-center pt-3 p-0 m-0">
+                <a type="button" href="listUsers.php" class="btn bg-white mt-3 col-1 ">Retour List</a>
+            </div>
 </main>
 
 <?php

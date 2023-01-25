@@ -88,7 +88,7 @@ $user = mysqli_fetch_assoc($query);
     <div class="container pt-5 col-3">
 
         <div class=" row border rounded shadow px-5 py-5">
-            <h3>informations</h3>
+            <h3>Informations</h3>
             <ul>
                 <li><?= $user["id_user"]; ?></li>
                 <li><?= $user["nom"]; ?></li>
@@ -123,7 +123,7 @@ $user = mysqli_fetch_assoc($query);
             $users = mysqli_fetch_assoc($query);
             ?>
 
-            <h4>Attention vous êtes sur le point de supprimer l'utilisateur <?php echo $users["nom"] . " " . $users["prenom"] . " 😦 " ?> </h4>
+            <h4 class="py-4">Attention vous êtes sur le point de supprimer l'utilisateur <?php echo $users["nom"] . " " . $users["prenom"] . " 😦 " ?> </h4>
 
             <div  class="container d-flex justify-content-around ">
                 <a type="button" class="btn bg-white mt-3 " href="listUsers.php">Retour liste</a>

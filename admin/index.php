@@ -68,14 +68,12 @@ include("../assets/inc/back/headerback.php")
 
 
         <div class="container mx-auto d-flex justify-content-center">
-
             <div class="row border rounded shadow">
                 <h3 class="text-center my-3">Login</h3>
                 <form action="../core/userController.php" method="POST">
                     <input type="hidden" name="faire" value="log-admin">
                     <input class="form-control mb-2" type="email" name="email" placeholder="Votre Email">
                     <input class="form-control mb-2" type="password" name="motdepass" placeholder="Votre mot de passe">
-
                     <div class="container d-flex justify-content-end m-0 p-0 pb-3">
                         <button class="btn bg-secondary text-light fw-light" name="soumettre" type="submit">Enregistrer</button>
                     </div>

@@ -15,19 +15,18 @@
                             <a class="nav-link active" aria-current="page" href="../index.php">Acceuil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Me contacter</a>
+                            <a class="nav-link" href="../messagesUsers.php">Liste des messages</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Parcourir
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Front-end</a></li>
                                 <li><a class="dropdown-item" href="listUsers.php">Liste des utilisateurs</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="créeunadmindusite.php">Ajouter un admin</a></li>
+                                <li><a class="dropdown-item" href="createUsers.php">Ajouter un admin</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -39,10 +38,8 @@
                             </ul>
                         </li>
                     </ul>
-                   
                 </div>
             </div>
         </nav>
     </header>
 
-   

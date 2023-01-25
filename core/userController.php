@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     // on analyse ce qu'il y a à faire :
     $action = "empty";
     // si la clé "faire" est détecté dans $_POST (avec la balise caché
@@ -9,9 +8,6 @@
         // notre variable action est égale à la valeur de la clé faire
         $action = $_POST["faire"];
     endif;
-
-
-
     // on utilise un switch pour vérifier l'action
     switch ($action):
         // log-admin correspond à value="log-admin" dans l'input caché
@@ -20,7 +16,6 @@
             logAdmin();
         break;
     endswitch;
-
     // on utilise un switch pour vérifier l'action
     switch ($action):
         // log-Out correspond à value="log-Out" dans l'input caché
@@ -29,7 +24,6 @@
             logOut();
         break;
     endswitch;
-
     switch ($action):
         
         case "update":
@@ -37,7 +31,6 @@
 
             break;
     endswitch;
-
     switch ($action):
         
         case "delete":
@@ -45,7 +38,6 @@
 
             break;
     endswitch;
-
     // les différentes fonctions de notre controleur
     function logAdmin(){
         // besoin de notre connexion
@@ -85,7 +77,7 @@
                     $_SESSION["isLog"] = true;
                     $_SESSION["role"] = $user["role"];
                     $_SESSION["message2"] = "Welcome !";
-                    header("Location:../admin/accueilAdmin.php");
+                    header("Location:../index.php");
                     exit;
                 endif;
             else:
@@ -101,7 +93,6 @@
             exit;
         endif;
     }
-
     function logOut(){
         // pour déconnecter l'admin, il faut supprimer les variables de session
         // on détruit la session avec session_destroy()
@@ -113,7 +104,6 @@
         header("Location:../index.php");
         exit;
     }
-
     function updateUser(){
 
         // Vérifier si les informations on bien été envoyées
@@ -181,8 +171,6 @@
             exit;
 
     }
-
-
     function deleteUser(){
         //recupération de la connexion
         require("connexion.php");

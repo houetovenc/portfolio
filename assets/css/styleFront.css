@@ -2,6 +2,157 @@ body {
     background-color: whitesmoke;
     color: rgb(63, 63, 63);
     font-family: 'Montserrat', sans-serif;
+    width: 100%;
 
 }
+
+.imageaccueil{
+    width: 100%;
+    height: 100%;
+}
+
+.imgblk{
+    width: 100%;
+    height: 660px;
+}
+
+.imgbannier{
+    width: 100%;
+    height: 375px;
+}
+
+.imgbannier2{
+    width: 100%;
+    height: 300px;
+}
+
+.bannier{
+    width: 100%;
+    height: 100%;
+}
+
+.imageportrait{
+    width: 350px;
+    height: 350px;
+    border-width: 3rem;
+    border-radius: 3rem;
+}
+.entete {
+    position: relative;
+    text-align: center;
+}
+
+.titreimage {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.textimage{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titreimage2{
+    color: white;
+
+}
+.HV{
+    font-size: 50px;
+    color: white;
+    font-weight: bolder;
+}
+.card-img-top{
+    width: 120px;
+    height: 120px;
+    margin: 2rem;
+}
+
+.card{
+    border: 3px solid rgb(232, 231, 231);
+    border-radius: 3rem;
+    align-items: center;
+}
+
+.card-body{
+    margin: 1rem;
+    text-align: justify;
+}
+
+.titresection1{
+    font-size: 40px;
+    color:cornflowerblue;
+    font-weight: bolder;
+}
+
+
+.titresection2{
+    font-size: 40px;
+    color:cornflowerblue;
+    font-weight: bolder;
+}
+
+.descriptionofme{
+    font-size: 20px;
+    text-align: justify;
+}
+
+.bannier {
+    position: relative;
+    text-align: center;
+}
+
+.actuellementtitre {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-size: larger;
+}
+
+
+.actuellementtext{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: larger;
+}
+
+.card{
+    width: 50px;
+    transition: transform .5s;
+    }
+
+.card:hover{
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2);
+}
+
+.cv1{
+    width: 470px;
+    height: 678px;
+    border-width: 3rem;
+    border-radius: 2rem;
+    transition: transform .3s;
+
+}
+.cv1:hover{
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+}
+
+.progress{
+    border: 1px solid rgb(104, 102, 102);
+
+}
+
+
 
